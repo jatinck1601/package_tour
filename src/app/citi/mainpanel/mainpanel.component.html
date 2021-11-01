@@ -1,0 +1,55 @@
+<div class="mainPanelStyle">
+    <div >
+        <h1>Trivago</h1>
+    </div>
+    <div class="mainSubPanel">
+        Enter Package: <input type="text" #search1/>
+        <input type="button" class="btn btn-primary" value="Search" (click)="search(search1.value)"/>
+    </div>
+    <hr />
+    <table class="table table-hover">
+        <tr>
+            <th> Selection</th>
+            <th> Package Name</th>
+            <th> Number of Days</th>
+            <th> Cost</th>
+            <th> Discount</th>
+        </tr>
+        <tr *ngFor="let pkg of pkgArr">
+            <td><input type="checkbox" (click)="addPackage(pkg)" /> <label><img src={{pkg.img}} width="100px" /></label> </td>
+            <td> {{pkg.packageName}} </td>
+            <td> {{pkg.nofdays}} </td>
+            <td> {{pkg.packageCost}} </td>
+            <td> {{pkg.packageDis}} </td>
+        </tr>
+
+    </table>
+    <div class="cent"> 
+    <input type="button" class="btn btn-primary" (click)="doThis()" value="Compare" />
+        </div>
+    <hr />
+    <h2>Comparison</h2>
+    <table *ngIf="print && count==2" class="tableovr" >
+        <hr>
+        <tr>
+            <th>Package Name</th>
+            <td >{{tmpArr[0].packageName}}</td>
+            <td >{{tmpArr[1].packageName}}</td>
+        </tr>
+        <tr>
+            <th>Days</th>
+            <td>{{tmpArr[0].nofdays}}</td>
+            <td>{{tmpArr[1].nofdays}}</td>
+        </tr>
+        <tr>
+            <th>Cost</th>
+            <td>{{tmpArr[0].packageCost}}</td>
+            <td>{{tmpArr[1].packageCost}}</td>
+        </tr>
+        <tr>
+            <th>Discount</th>
+            <td>{{tmpArr[0].packageDis}} </td>
+            <td>{{tmpArr[1].packageDis}} </td>
+        </tr>
+    </table>
+</div>
